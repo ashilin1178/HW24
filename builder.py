@@ -3,7 +3,7 @@ from typing import Optional
 from functions import filter_query, unique_query, map_query, sort_query, limit_query
 
 CMD_TO_FUNCTIONS = {
-    'fiter': filter_query,
+    'filter': filter_query,
     'unique': unique_query,
     'map': map_query,
     'sort': sort_query,

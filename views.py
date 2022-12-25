@@ -1,4 +1,5 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, Response
+from marshmallow import ValidationError
 
 from builder import build_query
 from models import BatchRequestSchema
@@ -15,7 +16,10 @@ def perform_query():
 
     # TODO: Обработать запрос, валидировать значения
 
-    validated_data = BatchRequestSchema().load(data)
+    try:
+        validated_data = BatchRequestSchema().load(data)
+    except ValidationError as error:
+        return jsonify(error.messages), 400
 
     # TODO: Выполнить запрос
     result = None
@@ -24,8 +28,7 @@ def perform_query():
             cmd=query['cmd'],
             value=query['value'],
             file_name=FILE_NAME,
-            data=result
-
+            data=result,
         )
 
     return jsonify(result)

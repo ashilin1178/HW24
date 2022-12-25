@@ -4,7 +4,7 @@ from typing import Iterable
 def filter_query(value: str, data: Iterable[str]):
     return filter(lambda x: value in x, data)
 
-def unique_query(data, *args, **kwargs):
+def unique_query(data: Iterable[str], *args, **kwargs):
     return set(data)
 
 def map_query(value: str, data: Iterable[str]):
@@ -17,4 +17,4 @@ def limit_query(value: str, data: Iterable[str]):
 
 def sort_query(value: str, data: Iterable[str]):
     reverse = value == 'desc'
-    retu
+    return sorted(data, reverse=reverse)
