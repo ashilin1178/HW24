@@ -1,33 +1,31 @@
-from flask import Blueprint, request, jsonify, Response
+from flask import Blueprint, request, jsonify
 from marshmallow import ValidationError
 
 from builder import build_query
 from models import BatchRequestSchema
 
-FILE_NAME = 'data/apache_logs.txt'
+
 main_bp = Blueprint('main', __name__)
 
 
 @main_bp.route('/perform_query', methods=['POST'])
 def perform_query():
-    # TODO: Принять запрос от пользователя
-
     data = request.json
 
-    # TODO: Обработать запрос, валидировать значения
 
     try:
         validated_data = BatchRequestSchema().load(data)
     except ValidationError as error:
         return jsonify(error.messages), 400
 
-    # TODO: Выполнить запрос
+
     result = None
+    file_name = validated_data['file_name']
     for query in validated_data['queries']:
         result = build_query(
             cmd=query['cmd'],
             value=query['value'],
-            file_name=FILE_NAME,
+            file_name=file_name,
             data=result,
         )
 
