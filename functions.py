@@ -25,7 +25,7 @@ def sort_query(value: str, data: Iterable[str]) -> List[str]:
     return sorted(data, reverse=reverse)
 
 
-def regex_query(value: str, data: Iterable[str]) -> List[str]:
+def regex_query(value: str, data: Iterable[str]) -> Iterable[str]:
     for line in data:
         query_ = re.search(value, line)
         if query_:
