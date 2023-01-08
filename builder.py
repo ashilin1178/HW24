@@ -1,13 +1,14 @@
 from typing import Optional
 
-from functions import filter_query, unique_query, map_query, sort_query, limit_query
+from functions import filter_query, unique_query, map_query, sort_query, limit_query, regex_query
 
 CMD_TO_FUNCTIONS = {
     'filter': filter_query,
     'unique': unique_query,
     'map': map_query,
     'sort': sort_query,
-    'limit': limit_query
+    'limit': limit_query,
+    'regex': regex_query
 
 }
 

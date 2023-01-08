@@ -2,7 +2,7 @@ import os
 
 from marshmallow import Schema, fields, validates_schema, ValidationError
 
-VALID_CMD_COMMANDS = ('filter', 'map', 'unique', 'sort', 'limit')
+VALID_CMD_COMMANDS = ('filter', 'map', 'unique', 'sort', 'limit', 'regex')
 VALID_VALUES_SORT = ('desc', 'asc')
 
 
